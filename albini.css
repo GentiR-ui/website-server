@@ -1,0 +1,120 @@
+p {
+    font-family: Roboto, Arial;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+body {
+    margin: 0;
+    
+    padding: 0;
+    
+}
+.header {
+    height: 82px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgb(33, 44, 79);
+    z-index: 100;
+    opacity: 0.9;
+   
+}
+.header a {
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 400;
+    color: white;
+    text-decoration: none;
+}
+.logo{
+    position: absolute;
+    left: -200px;
+    width: 0.2px;
+    height: 0.3px;
+}
+.left-section {
+    display: flex;
+    align-items: center;
+    width: 200px;
+    
+
+}
+.middle-section {
+    flex: 1;
+    max-width: 640px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+   
+}
+.right-section {
+    display: flex;
+    width: 200px;
+    align-items: center;
+}
+.log-in-button {
+    background-color: rgb(0, 174, 255);
+    color: white;
+    margin-left: 40px; 
+    width: 114px;
+    height: 43px;
+    font-size: 14px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    vertical-align: middle;
+    font-weight: 400;
+    font-style: normal;
+    border: none;
+}
+.log-in-button:hover {
+    background-color: rgb(57, 192, 255);
+  }
+.log-in-button:active {
+    opacity: 0.6;
+  }
+.first-block {
+    display: flex;
+    height: 700px;
+    width: 100%;
+    background-color: white;
+
+}
+.second-block {
+    display: flex;
+    height: 800px;
+    width: 100%;
+    background-color: rgb(33, 44, 79);
+}
+.third-block {
+    display: flex;
+    height: 800px;
+    width: 100%;
+    background-color: white;
+
+}
+.fourth-block {
+    display: flex;
+    height: 800px;
+    width: 100%;
+    background-color: rgb(33, 44, 79);
+
+}
+.fifth-block {
+    display: flex;
+    height: 800px;
+    width: 100%;
+    background-color: white;
+
+}
+.footer {
+    display: flex;
+    height: 800px;
+    width: 100%;
+    background-color: rgb(33, 44, 79);
+
+}
