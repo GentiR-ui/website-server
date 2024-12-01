@@ -1,0 +1,80 @@
+/*header*/
+navbar {
+    height: 82px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #22252C;
+    z-index: 100;
+    opacity: 0.9;
+   
+}
+
+navbar a {
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 400;
+    color: white;
+    text-decoration: none;
+}
+navbar a:hover{
+    color: #E14658;
+    transition: 0.3s;
+}
+
+.left-section {
+    display: flex;
+    align-items: center;
+    width: 200px;
+
+}
+.logo{
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border: none;
+    border-radius: 50%;
+}
+
+.middle-section {
+    flex: 1;
+    max-width: 640px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 200px;
+}
+
+
+.right-section {
+    display: flex;
+    width: 200px;
+    align-items: center;
+}
+
+.log-in-button {
+    background-color: #E14658;
+    color: white;
+    margin-left: 40px; 
+    width: 114px;
+    height: 43px;
+    font-size: 14px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    vertical-align: middle;
+    font-weight: 400;
+    font-style: normal;
+    transition-duration: 0.3s;
+    border: none;
+}
+.log-in-button:hover {
+    background-color: #dc707d;
+  }
+.log-in-button:active {
+    opacity: 0.6;
+  }
