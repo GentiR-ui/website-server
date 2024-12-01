@@ -85,7 +85,7 @@ section {
 }
 .discover-more-button {
     background-color: #E14658;
-    color: white; 
+     
     width: 150px;
     height: 50px;
     margin-top: 20px;
@@ -98,7 +98,12 @@ section {
     font-style: normal;
     transition-duration: 0.3s;
     border: none;
+    
    
+}
+.discover-more-button a{
+    text-decoration: none;
+    color: white;
 }
 .discover-more-button:hover {
     background-color: #dc707d;
