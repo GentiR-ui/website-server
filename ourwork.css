@@ -292,4 +292,310 @@ section {
     margin-bottom: 10px;
     
 }
+.fourth-block-body-form {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+    transition: 0.3s ease;
+    transition: background-color 0.3s ease;
+}
+.fourth-block-body-form:hover {
+    background: linear-gradient(to right, #E14658, #22252C);
+    color: whitesmoke;
+}
+.fourth-block-body-form img {
+    transition: filter 0.3s ease;
+}
+.fourth-block-body-form:hover img{
+    mix-blend-mode: lighten; /* Përzien imazhin me sfondin */
+    filter: brightness(0) invert(1); /* Bën ikonën të bardhë */
+}
 
+.fifth-block {
+    display: flex;
+    height: auto;
+    background-image: linear-gradient(
+        45deg,
+        hsl(222deg 13% 15%) 0%,
+        hsl(273deg 8% 17%) 5%,
+        hsl(322deg 11% 18%) 9%,
+        hsl(337deg 16% 20%) 14%,
+        hsl(344deg 20% 22%) 18%,
+        hsl(348deg 23% 24%) 23%,
+        hsl(350deg 26% 26%) 27%,
+        hsl(351deg 29% 28%) 32%,
+        hsl(352deg 31% 30%) 36%,
+        hsl(353deg 34% 32%) 41%,
+        hsl(353deg 36% 34%) 45%,
+        hsl(353deg 37% 36%) 50%,
+        hsl(354deg 39% 38%) 55%,
+        hsl(354deg 41% 40%) 59%,
+        hsl(354deg 42% 42%) 64%,
+        hsl(354deg 44% 44%) 68%,
+        hsl(354deg 45% 46%) 73%,
+        hsl(354deg 46% 48%) 77%,
+        hsl(354deg 48% 50%) 82%,
+        hsl(353deg 53% 52%) 86%,
+        hsl(353deg 59% 54%) 91%,
+        hsl(353deg 65% 56%) 95%,
+        hsl(353deg 72% 58%) 100%
+        );
+    flex-direction: row;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    
+    
+}
+.wcu {
+    color:#E14658;
+}
+.need-help {
+    background-color: white;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    padding-left: 25%;
+    padding-right: 25%;
+    text-align: center;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+.need-help h1{
+    font-size: 34px;
+    font-weight: 700;
+}
+.need-help-button {
+    width: 150px;
+    height: 50px;
+    background-color: #E14658;
+    border: none;
+    border-radius: 25px;
+    color: white;
+    font-weight: 400;
+    font-style: normal;
+    cursor: pointer;
+    transition-duration: 0.3s;
+}
+.need-help-button a{
+    text-decoration: none;
+    color: white;
+    font-weight: 400;
+    font-size: 15px;
+}
+.need-help-button:hover {
+    background-color: #dc707d;
+  }
+.need-help-button:active {
+    opacity: 0.6;
+  }
+.footer {
+    display: flex;
+    height: auto;
+    background-color: #22252C;
+    gap: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 60px;
+    padding-bottom: 30px;
+    color: white;
+
+}
+.footer a{
+    color: white;
+    font-size: 17px;
+    font-weight: 400;
+}
+.footer h1{
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+.footer-first {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+    width: 500px;
+    
+}
+.footer-second {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+.footer-third {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+.footer-fourth {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+.list {
+    list-style-type: none;
+    padding: 0;
+    
+}
+.list li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 20px;
+    
+    
+}
+.list a {
+    font-size: 17px;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 400;
+}
+.list li::before {
+    content: '\25B6';
+    color: #E14658;
+    position: absolute;
+    left: 0;
+    top: 3px;
+    font-size: 10px;
+}
+.list li a:hover {
+    color: #E14658;
+    transition: 0.3s;
+}
+.list li:hover{
+    color: white;
+}
+
+.footer-first img{
+    width: 200px;
+    
+}
+
+
+
+@media (max-width: 1100px) {
+    .header {
+        min-width: 900px;
+    }
+    .first-block {
+        height: auto;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        flex-direction: column;
+        width: auto;
+        padding-right: 100px;
+    }
+    .marketing-video {
+        width: auto;
+        height: auto;
+    }
+    .text-overvideo {
+        width: fit-content;
+        height: auto;
+    }
+    .second-block {
+        height: auto; 
+        flex-direction: column;
+        width: auto;
+        text-align: center;
+        justify-content: center;
+        
+
+        
+    }
+    .right-block {
+        width: 100%;
+        padding: 0;
+        justify-content: center;
+    }
+    .marketingImg{
+        object-fit: cover;    
+        height: auto;
+        max-width: 100%;
+    }
+    .right-block-second-img img{
+        visibility: hidden;
+    }
+
+    .third-block {
+        flex-direction: column;
+        justify-content: center;
+        height: auto;
+        align-items: center;
+    }
+
+    .third-block-body{
+        grid-template-columns: 1fr;
+        padding-bottom: 20px;
+    }
+    .third-block-title h1{
+        text-align: center;
+    }
+    .fourth-block {
+        flex-direction: column;
+        text-align: center;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .fourth-block-body {
+        flex-direction: column;
+        position: absolute;
+        width: 200px;
+    height: 250px;
+    }
+    .fifth-block {
+        flex-direction: column;
+        height: auto;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    
+    
+    
+    
+
+    .need-help {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .footer {
+        flex-direction: column;
+        width: auto;
+        height: auto;
+    }
+    .footer-first {
+        text-align: center;
+        align-items: center;
+    }
+
+}
+body, html {
+    overflow-x: hidden; 
+}
+.foto3 {
+    position: absolute;
+    width: 200px;
+    height: 250px;
+}
+.texti2{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 40px;
+    color: #E14658; 
+    margin-left: 500px;
+
+}
