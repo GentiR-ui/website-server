@@ -1,3 +1,12 @@
+<?php
+    session_start();
+
+    include("connection.php");
+    include("functions.php");
+
+    //$user_data = check_login($con);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +15,7 @@
     <title>ADSPIRE</title>
     <link rel="stylesheet" href="faqjaKryesore.css">
     <link rel="stylesheet" href="general.css">
-    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="header.css?<?php echo time(); ?>">
 </head>
 <body>
     <navbar class="header">
@@ -15,13 +24,20 @@
         </div>
         <div class="middle-section">
             <a href="FaqjaKryesore.html">HOME</a>
-            <a href="Services">SERVICES</a>
+            <li class="menu-item" id="services-menu"><a href="Services.html">SERVICES</a>
+                <ul class="submenu-content">
+                    <li><a href="MarketPlace.php">MARKETPLACE</a></li>
+                    <li><a href="VideoEditing.html">Video Editing</a></li>
+                    <li><a href="WebsiteMenagement.html">Website Menagement</a></li>
+                    <li><a href="LogoDesignServices.html">Logo Design Services</a></li>
+                </ul>
+            </li>
             <a href="OurWork.html">OUR WORK</a>
             <a href="AboutUs.html">ABOUT US</a>
             <a href="ContactUs.html">CONTACT US</a>
         </div>
         <div class="right-section">
-            <button class="log-in-button"><a href="login.html">LOG IN</a></button>
+            <button class="log-in-button"><a href="login.php">LOG IN</a></button>
         </div>
     </navbar>
     <main>
@@ -230,6 +246,7 @@
     
         </section>
     </main>
-    
+
+    <script src="script.js?v=<?php echo time(); ?>"></script>
 </body>
 </html>
