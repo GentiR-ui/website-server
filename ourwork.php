@@ -1,0 +1,184 @@
+<?php 
+session_start();
+
+include("connection.php");
+include("functions.php");
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADSPIRE</title>
+    <link rel="stylesheet" href="ourwork3.css">
+    <link rel="stylesheet" href="ourwork2.css">
+    <link rel="stylesheet" href="ourwork.css">
+</head>
+<body>
+<navbar class="header">
+        <div class="left-section">
+            <img src="faqjaKryesoreImg/logo.png" class="logo">
+        </div>
+        <div class="middle-section">
+            <a href="FaqjaKryesore.php">HOME</a>
+            <li class="menu-item" id="services-menu"><a href="Services.html">SERVICES</a>
+                <ul class="submenu-content">
+                    <li><a href="MarketPlace.php">MARKETPLACE</a></li>
+                    <li><a href="VideoEditing.html">Video Editing</a></li>
+                    <li><a href="WebsiteMenagement.html">Website Menagement</a></li>
+                    <li><a href="LogoDesignServices.html">Logo Design Services</a></li>
+                </ul>
+            </li>
+            <a href="OurWork.php">OUR WORK</a>
+            <a href="AboutUs.php">ABOUT US</a>
+            <a href="ContactUs.php">CONTACT US</a>
+        </div>
+        <div class="right-section">
+            <button class="log-in-button"><a href="login.php">LOG IN</a></button>
+        </div>
+    </navbar>
+    <main>
+        <section class="main">
+            <div class="first-block">
+                <video width="100%" height="100%" autoplay loop muted class="marketing-video">
+                    <source src="ourwork/video1.mp4" type="video/mp4">
+                </video>
+                <div class="text-overvideo">
+                    <p>OUR WORK</p>
+                    <h1>Transform your Stories Into Stunning Visuals</h1>
+                    <h3>we specialize in crafting compelling videos that captivate,
+                         inform, and inspire. From cinematic storytelling to sharp corporate edits,
+                          we bring your vision to life with precision and creativity.</h3>
+                </div>
+            </div>
+            <div class="second-block">
+                <div class="left-block">
+                    <div class="head-part">
+                        <p class="first-line">Why Choose Us?</p>
+                    </div>
+                    <div class="main-part">
+                        <p>
+                            <h2>1. Expertise You Can Trust</h2>
+                            With years of experience in video editing, we have mastered the art of
+                             transforming raw footage into compelling stories.
+                              From corporate promos to cinematic masterpieces, 
+                              we bring creativity and technical precision to every project. <br>
+                              <br>
+                            <h2>2. Personalized Approach</h2>  
+                            We understand that every project is unique. That is why we work closely with you to tailor every detail to your vision.
+                             Your goals, your brand, your voice—it all shines through in the final product <br>
+                              <br>
+                             <h2>3. High-Quality Results</h2>
+                             Our commitment to excellence means using state-of-the-art tools and techniques to deliver polished, professional videos.
+                             Stunning visuals, crisp audio, and seamless transitions are our standard. <br>
+                             <br>
+                             <h2>4. On-Time Delivery</h2>
+                             We respect your deadlines as much as you do.
+                             Our streamlined workflows ensure your project is completed on schedule without compromising quality. <br>
+                        </p>
+                    </div>
+                    <div class="button-part">
+                        <button class="discover-more-button">KNOW MORE ABOUT THIS</button>
+                    </div>
+                    
+                </div>
+                <div class="right-block">
+                    <div class="right-block-img">
+                        <img src="ourwork/foto2.png" class="marketingImg">
+                    </div>    
+                </div>
+            </div>
+            <div class="third-block">
+                <div class="third-block-title">
+                    <p>WEBSITE DEVELOPMENT</p>
+                    <h1>We create stunning, functional websites that help businesses thrive online.</h1>
+                </div>
+                <div class="third-block-body">
+                    <div class="third-block-texti1"> <I><b><h1>WHY CHOOSE US?</h1></b></I> <br>
+                     <br>
+                    <p>1. Years of experience in website development. <br>
+                        <br>
+                        2. Transparent pricing and timelines. <br>
+                        <br>
+                         3. Dedicated team for personalized support. <br>
+                    </p>
+                    </div>
+                </div>
+            </div>
+            <div class="fourth-block">
+                <h2>What's holding you back?</h2>
+                <div class="fourth-block-body">
+                    <img src="ourwork/foto4.png" alt="foto4">
+                    
+                </div>
+                <hr style="border: 1px solid rgb(223, 223, 223); width: 99%; margin: 20px auto;">
+                <div>
+                    <img src="ourwork/foto5.jpg" class="fourth-block-img">
+                </div>
+            </div>
+            <div class="fifth-block">
+                <div class="texti2">
+                    <p>1618 is a logo I designed to represent elegance and precision in clothing design.  
+                        Its clean lines and balanced elements reflect timeless creativity and sophistication, 
+                        capturing the artistry of fashion.</p>
+
+                </div>
+
+
+                
+                <div class="anamajt">
+                    <div class="logo1">
+                        <img src="ourwork/123-Photoroom.png" class="logo11">
+                        
+                    </div>
+                </div>
+                
+            </div>
+            <div class="need-help">
+                <h1>Need more help?</h1>
+                <p>We’re here to assist with expert advice, tailored solutions, 
+                    and ongoing support. Let’s connect and take your business to the next level.</p>
+                <button class="need-help-button"><a href="ContactUs.html">CONTACT US</a></button>
+            </div>
+            <div class="footer">
+                <div class="footer-first">
+                    <img src="faqjaKryesoreImg/logo.png" class="footerImg">
+                    <p>We help you grow and get recognized through digital marketing. 
+                        Our mission is to help build and elevate your business, as if it were our own.</p>
+                </div>
+                <div class="footer-second">
+                    <h1>Services</h1>
+                    <ul class="list">
+                        <li><a href="">Website development</a></li>
+                        <li><a href="">Video Editing</a></li>
+                        <li><a href="">Website Menagement</a></li>
+                        <li><a href="">Logo Design Services</a></li>
+                    </ul>
+
+                    </form>
+                    
+                </div>
+                <div class="footer-third">
+                    <h1>Company</h1>
+                    <ul class="list">
+                        <li><a href="">Services</a></li>
+                        <li><a href="">Our Work</a></li>
+                        <li><a href="">About Us</a></li>
+                        <li><a href="">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-fourth">
+                    <h1>Contacts</h1>
+                    <ul class="list">
+                        <li>Address: Prishtine,Kosova</li>
+                        <li>E-mail: info@adspire.org </li>
+                        <li>Phone / WhatsApp: +383 111 111</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>   
+</body>
+</html>

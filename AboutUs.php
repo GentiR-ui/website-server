@@ -1,0 +1,201 @@
+<?php
+session_start();
+
+include("connection.php");
+include("functions.php");
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADSPIRE</title>
+    <link rel="stylesheet" href="faqjaKryesore.css">
+    <link rel="stylesheet" href="general.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="Aboutus.css">
+</head>
+<body>
+<navbar class="header">
+        <div class="left-section">
+            <img src="faqjaKryesoreImg/logo.png" class="logo">
+        </div>
+        <div class="middle-section">
+            <a href="FaqjaKryesore.php">HOME</a>
+            <li class="menu-item" id="services-menu"><a href="Services.html">SERVICES</a>
+                <ul class="submenu-content">
+                    <li><a href="MarketPlace.php">MARKETPLACE</a></li>
+                    <li><a href="VideoEditing.html">Video Editing</a></li>
+                    <li><a href="WebsiteMenagement.html">Website Menagement</a></li>
+                    <li><a href="LogoDesignServices.html">Logo Design Services</a></li>
+                </ul>
+            </li>
+            <a href="OurWork.php">OUR WORK</a>
+            <a href="AboutUs.php">ABOUT US</a>
+            <a href="ContactUs.php">CONTACT US</a>
+        </div>
+        <div class="right-section">
+            <button class="log-in-button"><a href="login.php">LOG IN</a></button>
+        </div>
+    </navbar>
+    
+    <div class="AboutUs">
+        <h1>About Us</h1>
+       <P>
+        We are a digital marketing agency that helps businesses grow online. 
+         Our team creates engaging websites, videos, and marketing strategies tailored to each client.
+        We make sure our clients reach the right people with the right message at the right time.
+       </P>
+        
+</div>
+    <div class="divi">
+   <div class="WhoWeAre">
+
+    <div class="img1">
+
+        <img src="AboutUsImg/pic2 per website.jpg">
+
+    </div>
+    <div class="divi2">
+    <div class="WhoWeAre1">
+
+        <h2>WHO WE ARE</h2>
+        <h3>Unleashing Digital Potential</h3>
+        <p>We are a digital marketing agency that provides innovative and effective solutions for our clients. As a passionate team, 
+            we combine the expertise of a web developer and a video editor to create unique and engaging online experiences.
+           </p>
+
+           
+    </div>
+
+
+</div>
+
+    <div class="WhoWeAre2">
+           
+        <div class="img2">
+
+            <img src="AboutUsImg/pic1 per website.jpg" alt="pic2">
+    
+        </div>
+    
+        <div class="WhoWeAre3">
+             <h1>Customized Digital Solutions for your Success</h1>
+            <p>We offer a wide range of services, including website development, content creation, and tailored marketing strategies to help our clients
+                 enhance their online presence. Digital marketing is the key to a business's success in today's increasingly connected world, 
+                and we are here to ensure our clients reach the right audience, at the right time, with the right message.
+               </p>
+    
+               
+        </div>
+    </div>
+        
+
+    </div>
+    </div>
+    <div class="Motive">
+        <h1>The Best Solutions for Your Business</h1>
+       <P>At ADSPIRE, we provide exceptional digital solutions to help your business thrive.
+         From creative website development to tailored marketing strategies and dedicated support, 
+         we are here to bring your vision to life. Partner with us to elevate your brand and achieve 
+         remarkable success every step of the way.   
+       </P>
+        
+</div>
+
+<div class="fifth-block">
+    <div class="fifth-block-left-section">
+        <div class="fifth-block-left-section-title">
+            <p class="wcu">WHY CHOOSE US</p>
+            <h1>Our Commitment to Your Growth</h1>
+            <p>At <b>ADSPIRE</b>, we don’t just provide services; we craft solutions designed to help your business thrive. 
+                Our dedication to quality, creativity, and client success sets us apart. Here’s why you should choose us:</p>
+        </div>
+        <div class="fifth-block-left-section-block">
+            <div class="fifth-block-left-section-logo">
+                <img src="faqjaKryesoreIcons/checked.png" class="fifth-block-left-section-logo-img">
+            </div>
+            <div class="fifth-block-left-section-text">
+                <h1>Comprehensive Services</h1>
+                <p>We offer a full suite of solutions, including marketing, website creation, video editing, and more. 
+                    From strategy and planning to execution and ongoing support, we ensure every aspect of your project is handled seamlessly, delivering results that exceed your expectations.</p>
+            </div>
+        </div>
+        <div class="fifth-block-left-section-block">
+            <div class="fifth-block-left-section-logo">
+                <img src="faqjaKryesoreIcons/checked.png" class="fifth-block-left-section-logo-img">
+            </div>
+            <div class="fifth-block-left-section-text">
+                <h1>Tailored Solutions</h1>
+                <p>We know every business is unique. That’s why we create custom strategies and designs 
+                    tailored to your brand’s identity, audience, and goals. Our work is designed to connect with your target market and achieve measurable results.</p>
+            </div>
+        </div>
+        <div class="fifth-block-left-section-block">
+            <div class="fifth-block-left-section-logo">
+                <img src="faqjaKryesoreIcons/checked.png" class="fifth-block-left-section-logo-img">
+            </div>
+            <div class="fifth-block-left-section-text">
+                <h1>Creative Excellence</h1>
+                <p>Our team of experts combines innovation and technical expertise to deliver high-quality websites, 
+                    engaging marketing campaigns, and stunning video content that leave a lasting impact.</p>
+            </div>
+        </div>
+    </div>
+    <div class="fifth-block-right-section">
+        <div class="fifth-block-right-section-first-img">
+            <img src="faqjaKryesoreImg/marketinggg.webp">
+        </div>
+        <div class="fifth-block-right-section-second-img">
+            <img src="faqjaKryesoreImg/webdesignimg.jpg">
+        </div>
+        
+    </div>
+</div>
+<div class="need-help">
+    <h1>Need more help?</h1>
+    <p>We’re here to assist with expert advice, tailored solutions, 
+        and ongoing support. Let’s connect and take your business to the next level.</p>
+    <button class="need-help-button"><a href="ContactUs.html">CONTACT US</a></button>
+</div>
+<div class="footer">
+    <div class="footer-first">
+        <img src="faqjaKryesoreImg/logo.png" class="footerImg">
+        <p>We help you grow and get recognized through digital marketing. 
+            Our mission is to help build and elevate your business, as if it were our own.</p>
+    </div>
+    <div class="footer-second">
+        <h1>Services</h1>
+        <ul class="list">
+            <li><a href="">Website development</a></li>
+            <li><a href="">Video Editing</a></li>
+            <li><a href="">Website Menagement</a></li>
+            <li><a href="">Logo Design Services</a></li>
+        </ul>
+
+        </form>
+        
+    </div>
+    <div class="footer-third">
+        <h1>Company</h1>
+        <ul class="list">
+            <li><a href="">Services</a></li>
+            <li><a href="">Our Work</a></li>
+            <li><a href="">About Us</a></li>
+            <li><a href="">Contact Us</a></li>
+        </ul>
+    </div>
+    <div class="footer-fourth">
+        <h1>Contacts</h1>
+        <ul class="list">
+            <li>Address: Prishtine,Kosova</li>
+            <li>E-mail: info@adspire.org </li>
+            <li>Phone / WhatsApp: +383 111 111</li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>

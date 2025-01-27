@@ -4,6 +4,16 @@
     include("connection.php");
     include("functions.php");
 
+    function merrPermbajtjen($renditja, $con) {
+        $sql = "SELECT permbajtja FROM faqja_kryesore WHERE renditja = :renditja";
+        $stmt = $con->prepare($sql);
+        $stmt->bindParam(':renditja', $renditja, PDO::PARAM_INT);
+        $stmt->execute();
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $row ? $row['permbajtja'] : null; // Kthen permbajtjen ose null nëse nuk gjendet
+    }
+    
+    
     //$user_data = check_login($con);
 ?>
 
@@ -13,8 +23,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADSPIRE</title>
-    <link rel="stylesheet" href="faqjaKryesore.css">
-    <link rel="stylesheet" href="general.css">
+    <link rel="stylesheet" href="faqjaKryesore.css?<?php echo time(); ?>">
+    <link rel="stylesheet" href="general.css?<?php echo time(); ?>">
     <link rel="stylesheet" href="header.css?<?php echo time(); ?>">
 </head>
 <body>
@@ -23,7 +33,7 @@
             <img src="faqjaKryesoreImg/logo.png" class="logo">
         </div>
         <div class="middle-section">
-            <a href="FaqjaKryesore.html">HOME</a>
+            <a href="FaqjaKryesore.php">HOME</a>
             <li class="menu-item" id="services-menu"><a href="Services.html">SERVICES</a>
                 <ul class="submenu-content">
                     <li><a href="MarketPlace.php">MARKETPLACE</a></li>
@@ -32,9 +42,9 @@
                     <li><a href="LogoDesignServices.html">Logo Design Services</a></li>
                 </ul>
             </li>
-            <a href="OurWork.html">OUR WORK</a>
-            <a href="AboutUs.html">ABOUT US</a>
-            <a href="ContactUs.html">CONTACT US</a>
+            <a href="OurWork.php">OUR WORK</a>
+            <a href="AboutUs.php">ABOUT US</a>
+            <a href="ContactUs.php">CONTACT US</a>
         </div>
         <div class="right-section">
             <button class="log-in-button"><a href="login.php">LOG IN</a></button>
@@ -43,34 +53,31 @@
     <main>
         <section class="main">
             <div class="first-block">
-                <video width="100%" height="100%" autoplay loop muted class="marketing-video">
-                    <source src="faqjaKryesoreImg/marketingVideo.mp4" type="video/mp4">
-                    <p>Pajisja ose shfletuesi juaj nuk mbështet video. Ju lutemi shkarkoni videon nga 
-                       <a href="faqjaKryesoreImg/marketingVideo.mp4">këtu</a>.</p>
+                
+                 <video width="100%" height="100%" autoplay loop muted class="marketing-video">
+                <source src="<?php echo merrPermbajtjen(3, $con)?>" type="video/mp4">
+                    
                 </video>
+                
                 <div class="text-overvideo">
                     <p>DIGITAL MARKETING AGENCY</p>
-                    <h1>Transform Your Brand</h1>
-                    <h3>We build amazing websites and edit videos to boost visibility and enhance brand quality</h3>
+                    <h1><?php echo merrPermbajtjen(1, $con)?></h1>
+                    
+                    <h3><?php echo merrPermbajtjen(2, $con)?></h3>
                     <button class="first-block-button">REQUEST A QUOTE</button>
                 </div>
+            
+                
             </div>
             <div class="second-block">
                 <div class="left-block">
                     <div class="head-part">
                         <p class="first-line">WHO WE ARE</p>
-                        <h1>Unleashing Digital Potential</h1>
+                        <h1><?php echo merrPermbajtjen(4, $con)?></h1>
                     </div>
                     <div class="main-part">
                         <p>
-                            We are a digital marketing agency that provides innovative 
-                            and effective solutions for our clients. As a passionate team,
-                             we combine the expertise of a web developer and a video editor 
-                             to create unique and engaging online experiences. <br> <br>We offer a wide 
-                             range of services, including website development, content creation, 
-                             and tailored marketing strategies to help our clients enhance their online presence. 
-                             Digital marketing is the key to a business's success in today's increasingly connected world, 
-                             and we are here to ensure our clients reach the right audience, at the right time, with the right message.
+                        <?php echo merrPermbajtjen(5, $con)?>
                         </p>
                     </div>
                     <div class="button-part">
@@ -80,10 +87,10 @@
                 </div>
                 <div class="right-block">
                     <div class="right-block-img">
-                        <img src="faqjaKryesoreImg/digital-marketing-2.jpg" class="marketingImg">
+                        <img src="<?php echo merrPermbajtjen(6, $con)?>" class="marketingImg">
                     </div>
                     <div class="right-block-second-img">
-                        <img src="faqjaKryesoreImg/R.jpg">
+                        <img src="<?php echo merrPermbajtjen(7, $con)?>">
                     </div>
                     
                 </div>
@@ -91,36 +98,31 @@
             <div class="third-block">
                 <div class="third-block-title">
                     <p>WHAT WE OFFER</p>
-                    <h1>We Elevate Your Brand with Creative Marketing Solutions</h1>
+                    <h1><?php echo merrPermbajtjen(8, $con)?></h1>
                 </div>
                 <div class="third-block-body">
                     <div class="block-form">
                         <img src="faqjaKryesoreIcons/web-programming.png">
-                        <h1 >Website Development</h1>
-                        <p >We specialize in creating modern, 
-                            responsive, and user-friendly websites tailored
-                             to meet your unique needs</p>
+                        <h1 ><?php echo merrPermbajtjen(9, $con)?></h1>
+                        <p ><?php echo merrPermbajtjen(10, $con)?></p>
                         <button class="block-form-button">LEARN MORE</button>     
                     </div>
                     <div class="block-form">
                         <img src="faqjaKryesoreIcons/video-editing.png">
-                        <h1 class="">Video Editing</h1>
-                        <p>We offer expert video editing services to transform your content into engaging, high-quality videos that
-                             captivate your audience and enhance your brand</p>
+                        <h1 class=""><?php echo merrPermbajtjen(11, $con)?></h1>
+                        <p><?php echo merrPermbajtjen(12, $con)?></p>
                         <button class="block-form-button">LEARN MORE</button>     
                     </div>
                     <div class="block-form">
                         <img src="faqjaKryesoreIcons//digital-services.png">
-                        <h1 class="">Website Menagement</h1>
-                        <p>We provide expert website management services, ensuring your site runs smoothly, stays updated,
-                             and delivers a seamless experience for your users</p>
+                        <h1 class=""><?php echo merrPermbajtjen(13, $con)?></h1>
+                        <p><?php echo merrPermbajtjen(14, $con)?></p>
                         <button class="block-form-button">LEARN MORE</button>     
                     </div>
                     <div class="block-form">
                         <img src="faqjaKryesoreIcons/logo-design.png">
-                        <h1 class="">Logo Design Services</h1>
-                        <p>We create unique and memorable logo designs that capture 
-                            your brand’s essence and make a lasting impression on your audience</p>
+                        <h1 class=""><?php echo merrPermbajtjen(16, $con)?></h1>
+                        <p><?php echo merrPermbajtjen(17, $con)?></p>
                         <button class="block-form-button">LEARN MORE</button>     
                     </div>
                 </div>
@@ -131,25 +133,22 @@
                     <div class="fourth-block-body-form">
                         <img src="faqjaKryesoreIcons/smartphone.png" class="smartphone">
                         <h3>MISSED ENGAGEMENT</h3>
-                        <p>Are you struggling to promptly respond to direct messages and comments?
-                             Do you find yourself overwhelmed and unable to effectively engage with your audience?</p>
+                        <p><?php echo merrPermbajtjen(18, $con)?></p>
                     </div>
                     <div class="fourth-block-body-form" class="ask">
                         <img src="faqjaKryesoreIcons/ask.png">
                         <h3>EXPERTISE</h3>
-                        <p>Are you daunted by the need to keep up with the latest marketing best practices, 
-                            and worry that your strategies might be falling behind?</p>
+                        <p><?php echo merrPermbajtjen(19, $con)?></p>
                     </div>
                     <div class="fourth-block-body-form" class="time">
                         <img src="faqjaKryesoreIcons/time.png">
                         <h3>LACK OF TIME</h3>
-                        <p>Do you find it difficult to find time to manage — or even start
-                             — email marketing campaigns, causing you to miss out on invaluable engagement and sales opportunities?</p>
+                        <p><?php echo merrPermbajtjen(20, $con)?></p>
                     </div>
                 </div>
                 <hr style="border: 1px solid rgb(223, 223, 223); width: 99%; margin: 20px auto;">
                 <div>
-                    <img src="faqjaKryesoreImg/digitalMarketing.jpg" class="fourth-block-img">
+                    <img src="<?php echo merrPermbajtjen(21, $con)?>" class="fourth-block-img">
                 </div>
             </div>
             <div class="fifth-block">
@@ -157,8 +156,7 @@
                     <div class="fifth-block-left-section-title">
                         <p class="wcu">WHY CHOOSE US</p>
                         <h1>Our Commitment to Your Growth</h1>
-                        <p>At <b>ADSPIRE</b>, we don’t just provide services; we craft solutions designed to help your business thrive. 
-                            Our dedication to quality, creativity, and client success sets us apart. Here’s why you should choose us:</p>
+                        <p><?php echo merrPermbajtjen(22, $con)?></p>
                     </div>
                     <div class="fifth-block-left-section-block">
                         <div class="fifth-block-left-section-logo">
@@ -166,8 +164,7 @@
                         </div>
                         <div class="fifth-block-left-section-text">
                             <h1>Comprehensive Services</h1>
-                            <p>We offer a full suite of solutions, including marketing, website creation, video editing, and more. 
-                                From strategy and planning to execution and ongoing support, we ensure every aspect of your project is handled seamlessly, delivering results that exceed your expectations.</p>
+                            <p><?php echo merrPermbajtjen(23, $con)?></p>
                         </div>
                     </div>
                     <div class="fifth-block-left-section-block">
@@ -176,8 +173,7 @@
                         </div>
                         <div class="fifth-block-left-section-text">
                             <h1>Tailored Solutions</h1>
-                            <p>We know every business is unique. That’s why we create custom strategies and designs 
-                                tailored to your brand’s identity, audience, and goals. Our work is designed to connect with your target market and achieve measurable results.</p>
+                            <p><?php echo merrPermbajtjen(24, $con)?></p>
                         </div>
                     </div>
                     <div class="fifth-block-left-section-block">
@@ -186,32 +182,29 @@
                         </div>
                         <div class="fifth-block-left-section-text">
                             <h1>Creative Excellence</h1>
-                            <p>Our team of experts combines innovation and technical expertise to deliver high-quality websites, 
-                                engaging marketing campaigns, and stunning video content that leave a lasting impact.</p>
+                            <p><?php echo merrPermbajtjen(25, $con)?></p>
                         </div>
                     </div>
                 </div>
                 <div class="fifth-block-right-section">
                     <div class="fifth-block-right-section-first-img">
-                        <img src="faqjaKryesoreImg/marketinggg.webp">
+                        <img src="<?php echo merrPermbajtjen(26, $con)?>">
                     </div>
                     <div class="fifth-block-right-section-second-img">
-                        <img src="faqjaKryesoreImg/webdesignimg.jpg">
+                        <img src="<?php echo merrPermbajtjen(27, $con)?>">
                     </div>
                     
                 </div>
             </div>
             <div class="need-help">
                 <h1>Need more help?</h1>
-                <p>We’re here to assist with expert advice, tailored solutions, 
-                    and ongoing support. Let’s connect and take your business to the next level.</p>
+                <p><?php echo merrPermbajtjen(28, $con)?></p>
                 <button class="need-help-button"><a href="ContactUs.html">CONTACT US</a></button>
             </div>
             <div class="footer">
                 <div class="footer-first">
-                    <img src="faqjaKryesoreImg/logo.png" class="footerImg">
-                    <p>We help you grow and get recognized through digital marketing. 
-                        Our mission is to help build and elevate your business, as if it were our own.</p>
+                    <img src="<?php echo merrPermbajtjen(29, $con)?>" class="footerImg">
+                    <p><?php echo merrPermbajtjen(30, $con)?></p>
                 </div>
                 <div class="footer-second">
                     <h1>Services</h1>

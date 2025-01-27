@@ -663,11 +663,12 @@ section {
     }
 
     .footer {
-        flex-direction: column;
         width: auto;
         height: auto;
+        
     }
     .footer-first {
+        width: 100%;
         text-align: center;
         align-items: center;
     }
