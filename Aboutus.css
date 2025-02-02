@@ -411,54 +411,50 @@
     width: 200px;
     
 }
-
-@media (max-width: 1100px) {
-    .header {
-        min-width: 900px;
+@media (max-width: 768px) {
+    .AboutUs h1 {
+        font-size: 30px;
     }
-    .AboutUs{
-        text-align: center;
+    .AboutUs p {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .WhoWeAre1, .WhoWeAre3 {
+        width: 90%;
+        margin-left: 0;
+    }
+    .img1, .img2 {
+        width: 90%;
         height: auto;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding-bottom: 80px;
+        margin-right: 0;
     }
-    .Motive {
-        display: flex;
-        height: auto;
+    .fifth-block {
         flex-direction: column;
-        padding-bottom: 60px;
-
+        padding-left: 20px;
+        padding-right: 20px;
     }
-    .divi {
-        display: flex;
-        height: auto;
+    .fifth-block-left-section {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .fifth-block-right-section-first-img img,
+    .fifth-block-right-section-second-img img {
+        width: 100%;
+        right: 0;
+        top: 0;
+        position: relative;
+    }
+    .need-help {
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+    .footer {
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        gap: 20px;
+        padding-left: 10px;
+        padding-right: 10px;
     }
-    .WhoWeAre {
-        display: flex;
-        height: auto;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+    .footer-first, .footer-second, .footer-third, .footer-fourth {
+        width: 100%;
     }
-    .WhoWeAre2 {
-        display: flex;
-        height: auto;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;   
-    }
-    .WhoWeAre3 {
-        display: flex;
-        height: auto;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;   
-    }
-    
 }

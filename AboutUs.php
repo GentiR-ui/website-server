@@ -4,6 +4,15 @@ session_start();
 include("connection.php");
 include("functions.php");
 
+function merrPermbajtjen($renditja, $con) {
+    $sql = "SELECT permbajtja FROM aboutus WHERE renditja = :renditja";
+    $stmt = $con->prepare($sql);
+    $stmt->bindParam(':renditja', $renditja, PDO::PARAM_INT);
+    $stmt->execute();
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $row ? $row['permbajtja'] : null; 
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -12,10 +21,11 @@ include("functions.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADSPIRE</title>
-    <link rel="stylesheet" href="faqjaKryesore.css">
-    <link rel="stylesheet" href="general.css">
-    <link rel="stylesheet" href="header.css">
-    <link rel="stylesheet" href="Aboutus.css">
+    <link rel="stylesheet" href="faqjaKryesore.css?<?php echo time(); ?>">
+    <link rel="stylesheet" href="general.css?<?php echo time(); ?>">
+    <link rel="stylesheet" href="header.css?<?php echo time(); ?>">
+    <link rel="stylesheet" href="Aboutus.css?<?php echo time(); ?>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
 </head>
 <body>
 <navbar class="header">
@@ -24,29 +34,56 @@ include("functions.php");
         </div>
         <div class="middle-section">
             <a href="FaqjaKryesore.php">HOME</a>
-            <li class="menu-item" id="services-menu"><a href="Services.html">SERVICES</a>
+            <li class="menu-item" id="services-menu"><a >SERVICES</a>
                 <ul class="submenu-content">
                     <li><a href="MarketPlace.php">MARKETPLACE</a></li>
-                    <li><a href="VideoEditing.html">Video Editing</a></li>
-                    <li><a href="WebsiteMenagement.html">Website Menagement</a></li>
-                    <li><a href="LogoDesignServices.html">Logo Design Services</a></li>
                 </ul>
             </li>
-            <a href="OurWork.php">OUR WORK</a>
+            <a href="ourwork.php">OUR WORK</a>
             <a href="AboutUs.php">ABOUT US</a>
-            <a href="ContactUs.php">CONTACT US</a>
+            <a href="contactUs.php">CONTACT US</a>
         </div>
         <div class="right-section">
-            <button class="log-in-button"><a href="login.php">LOG IN</a></button>
+            <?php
+                if (isset($_SESSION['user_id'])) {
+                    echo '
+                        <div class="icons">
+                        <i class="bi bi-person" id="user-btn"></i>
+                        <i class="bi bi-list" id="menu-btn"></i>
+                        </div>   
+                        <ul class="user-box" id="myDiv">
+                        <p>Username : <span>' . $user_data["user_name"] . '</span></p>
+                        <p>Email : <span>' . $user_data["user_email"] . '</span></p>
+                        <form action="logout.php" method="post">
+                        <button type="submit" class="btn" value="logout">Logout</button>
+                        </form>      
+                        </ul> 
+                    ';
+                } else {
+                    echo '
+                    <button class="log-in-button"><a href="login.php">LOG IN</a></button>
+                    <div class="icons">
+                        <i class="bi bi-list" id="menu-btn"></i>
+                    </div>  
+                    ';
+                }
+            ?>
+            
+            
+        </div>
+        <div class="mid">
+            <a href="FaqjaKryesore.php">HOME</a>
+            <a href="MarketPlace.php">MARKETPLACE</a>  
+            <a href="ourwork.php">OUR WORK</a>
+            <a href="AboutUs.php">ABOUT US</a>
+            <a href="contactUs.php">CONTACT US</a>
         </div>
     </navbar>
     
     <div class="AboutUs">
         <h1>About Us</h1>
        <P>
-        We are a digital marketing agency that helps businesses grow online. 
-         Our team creates engaging websites, videos, and marketing strategies tailored to each client.
-        We make sure our clients reach the right people with the right message at the right time.
+       <?php echo merrPermbajtjen(1, $con)?>
        </P>
         
 </div>
@@ -55,7 +92,7 @@ include("functions.php");
 
     <div class="img1">
 
-        <img src="AboutUsImg/pic2 per website.jpg">
+        <img src="<?php echo merrPermbajtjen(2, $con)?>">
 
     </div>
     <div class="divi2">
@@ -63,8 +100,7 @@ include("functions.php");
 
         <h2>WHO WE ARE</h2>
         <h3>Unleashing Digital Potential</h3>
-        <p>We are a digital marketing agency that provides innovative and effective solutions for our clients. As a passionate team, 
-            we combine the expertise of a web developer and a video editor to create unique and engaging online experiences.
+        <p><?php echo merrPermbajtjen(3, $con)?>
            </p>
 
            
@@ -77,15 +113,13 @@ include("functions.php");
            
         <div class="img2">
 
-            <img src="AboutUsImg/pic1 per website.jpg" alt="pic2">
+            <img src="<?php echo merrPermbajtjen(4, $con)?>" alt="pic2">
     
         </div>
     
         <div class="WhoWeAre3">
              <h1>Customized Digital Solutions for your Success</h1>
-            <p>We offer a wide range of services, including website development, content creation, and tailored marketing strategies to help our clients
-                 enhance their online presence. Digital marketing is the key to a business's success in today's increasingly connected world, 
-                and we are here to ensure our clients reach the right audience, at the right time, with the right message.
+            <p><?php echo merrPermbajtjen(5, $con)?>
                </p>
     
                
@@ -97,10 +131,7 @@ include("functions.php");
     </div>
     <div class="Motive">
         <h1>The Best Solutions for Your Business</h1>
-       <P>At ADSPIRE, we provide exceptional digital solutions to help your business thrive.
-         From creative website development to tailored marketing strategies and dedicated support, 
-         we are here to bring your vision to life. Partner with us to elevate your brand and achieve 
-         remarkable success every step of the way.   
+       <P><?php echo merrPermbajtjen(6, $con)?>   
        </P>
         
 </div>
@@ -110,8 +141,7 @@ include("functions.php");
         <div class="fifth-block-left-section-title">
             <p class="wcu">WHY CHOOSE US</p>
             <h1>Our Commitment to Your Growth</h1>
-            <p>At <b>ADSPIRE</b>, we don’t just provide services; we craft solutions designed to help your business thrive. 
-                Our dedication to quality, creativity, and client success sets us apart. Here’s why you should choose us:</p>
+            <p><?php echo merrPermbajtjen(7, $con)?></p>
         </div>
         <div class="fifth-block-left-section-block">
             <div class="fifth-block-left-section-logo">
@@ -119,8 +149,7 @@ include("functions.php");
             </div>
             <div class="fifth-block-left-section-text">
                 <h1>Comprehensive Services</h1>
-                <p>We offer a full suite of solutions, including marketing, website creation, video editing, and more. 
-                    From strategy and planning to execution and ongoing support, we ensure every aspect of your project is handled seamlessly, delivering results that exceed your expectations.</p>
+                <p><?php echo merrPermbajtjen(8, $con)?></p>
             </div>
         </div>
         <div class="fifth-block-left-section-block">
@@ -129,8 +158,7 @@ include("functions.php");
             </div>
             <div class="fifth-block-left-section-text">
                 <h1>Tailored Solutions</h1>
-                <p>We know every business is unique. That’s why we create custom strategies and designs 
-                    tailored to your brand’s identity, audience, and goals. Our work is designed to connect with your target market and achieve measurable results.</p>
+                <p><?php echo merrPermbajtjen(9, $con)?></p>
             </div>
         </div>
         <div class="fifth-block-left-section-block">
@@ -139,32 +167,29 @@ include("functions.php");
             </div>
             <div class="fifth-block-left-section-text">
                 <h1>Creative Excellence</h1>
-                <p>Our team of experts combines innovation and technical expertise to deliver high-quality websites, 
-                    engaging marketing campaigns, and stunning video content that leave a lasting impact.</p>
+                <p><?php echo merrPermbajtjen(10, $con)?></p>
             </div>
         </div>
     </div>
     <div class="fifth-block-right-section">
         <div class="fifth-block-right-section-first-img">
-            <img src="faqjaKryesoreImg/marketinggg.webp">
+            <img src="<?php echo merrPermbajtjen(11, $con)?>">
         </div>
         <div class="fifth-block-right-section-second-img">
-            <img src="faqjaKryesoreImg/webdesignimg.jpg">
+            <img src="<?php echo merrPermbajtjen(12, $con)?>">
         </div>
         
     </div>
 </div>
 <div class="need-help">
     <h1>Need more help?</h1>
-    <p>We’re here to assist with expert advice, tailored solutions, 
-        and ongoing support. Let’s connect and take your business to the next level.</p>
-    <button class="need-help-button"><a href="ContactUs.html">CONTACT US</a></button>
+    <p><?php echo merrPermbajtjen(13, $con)?></p>
+    <button class="need-help-button"><a href="contactUs.php">CONTACT US</a></button>
 </div>
 <div class="footer">
     <div class="footer-first">
-        <img src="faqjaKryesoreImg/logo.png" class="footerImg">
-        <p>We help you grow and get recognized through digital marketing. 
-            Our mission is to help build and elevate your business, as if it were our own.</p>
+        <img src="<?php echo merrPermbajtjen(14, $con)?>" class="footerImg">
+        <p><?php echo merrPermbajtjen(15, $con)?></p>
     </div>
     <div class="footer-second">
         <h1>Services</h1>
@@ -197,5 +222,51 @@ include("functions.php");
     </div>
 </div>
 
+<script>
+        
+    const userBtn = document.getElementById("user-btn");
+    const userBox = document.getElementById("myDiv");
+
+
+    userBtn.addEventListener("click", (e) => {
+        e.stopPropagation(); 
+        if (userBox.style.display === "block") {
+            userBox.style.display = "none";
+        } else {
+            userBox.style.display = "block";
+        }
+    });
+
+
+    const menuBtn = document.getElementById("menu-btn");
+    const middleSection = document.querySelector(".mid");
+
+    window.addEventListener("click", (e) => {
+        if (!userBox.contains(e.target) && !userBtn.contains(e.target)) {
+        }
+        if (!middleSection.contains(e.target) && !menuBtn.contains(e.target)) {
+            middleSection.style.display = "none";
+        }
+    });
+    
+    menuBtn.addEventListener("click", (e) => {
+        e.stopPropagation(); 
+        if (middleSection.style.display === "block") {
+            middleSection.style.display = "none";
+        } else {
+            middleSection.style.display = "block";
+        }
+    });
+
+    
+    window.addEventListener("resize", () => {
+        if (window.innerWidth > 768) {
+            middleSection.style.display = "none";
+        }
+    });
+
+   
+    
+    </script>
 </body>
 </html>

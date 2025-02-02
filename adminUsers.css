@@ -1,0 +1,142 @@
+body {
+
+    padding: 90px;
+    background-image: linear-gradient(
+    45deg,
+    hsl(222deg 13% 15%) 0%,
+    hsl(273deg 8% 17%) 5%,
+    hsl(322deg 11% 18%) 9%,
+    hsl(337deg 16% 20%) 14%,
+    hsl(344deg 20% 22%) 18%,
+    hsl(348deg 23% 24%) 23%,
+    hsl(350deg 26% 26%) 27%,
+    hsl(351deg 29% 28%) 32%,
+    hsl(352deg 31% 30%) 36%,
+    hsl(353deg 34% 32%) 41%,
+    hsl(353deg 36% 34%) 45%,
+    hsl(353deg 37% 36%) 50%,
+    hsl(354deg 39% 38%) 55%,
+    hsl(354deg 41% 40%) 59%,
+    hsl(354deg 42% 42%) 64%,
+    hsl(354deg 44% 44%) 68%,
+    hsl(354deg 45% 46%) 73%,
+    hsl(354deg 46% 48%) 77%,
+    hsl(354deg 48% 50%) 82%,
+    hsl(353deg 53% 52%) 86%,
+    hsl(353deg 59% 54%) 91%,
+    hsl(353deg 65% 56%) 95%,
+    hsl(353deg 72% 58%) 100%
+    );
+}
+.titulli{
+   text-align: center;
+   margin-bottom: 70px;
+   margin-top: 20px;
+   font-size: 24px;
+   font-weight: 700;
+   color: whitesmoke;
+    
+}
+.users{
+    display: flex;
+    gap: 40px;
+    
+}
+.section_user {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    height: auto;
+    padding: 20px;
+
+    
+}
+
+.btns{
+    display: flex;
+    gap: 10px;
+    flex-direction: row;
+}
+
+.user_info{
+    display: flex;
+    flex-direction: column;
+    border: solid 1px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: inset;
+    gap: 7px;
+    color: whitesmoke;
+    
+}
+.user_info a{
+    text-decoration: none;
+    text-align: center;
+    align-items: center;
+    width: 20%;
+    color: whitesmoke;
+}
+
+.editUser {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 20px auto;
+}
+
+.editUser h3 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.editUser form {
+    display: flex;
+    flex-direction: column;
+}
+
+.editUser input[type="text"],
+.editUser input[type="submit"] {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.editUser input[type="submit"] {
+    background-color: #dc707d;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.editUser input[type="submit"]:hover {
+    background-color: #dd8892;
+}
+
+@media (max-width: 768px) {
+    .users {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .btns {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .user_info {
+        padding: 10px;
+    }
+
+    .editUser {
+        padding: 10px;
+        max-width: 100%;
+    }
+
+    .editUser input[type="text"],
+    .editUser input[type="submit"] {
+        padding: 8px;
+    }
+}

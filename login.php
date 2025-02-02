@@ -20,9 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
             if ($stmt->rowCount() > 0) {
                 $user_data = $stmt->fetch(PDO::FETCH_ASSOC);
-
-                // Kontrollo për admin dhe fjalëkalimin
-                if ($user_data['user_name'] === 'admin') {
+                if ($user_data['user_type'] === 'admin') {
                     if (password_verify($password, $user_data['password'])) {
                         $_SESSION['user_id'] = $user_data['user_id'];
                         $_SESSION['user_name'] = $user_data['user_name'];
@@ -32,14 +30,17 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                         $error_message = "Incorrect password";
                     }
                 } 
-                // Kontroll për përdorues normal
-                else if (password_verify($password, $user_data['password'])) {
-                    $_SESSION['user_id'] = $user_data['user_id'];
-                    $_SESSION['user_name'] = $user_data['user_name'];
-                    header("Location: faqjaKryesore.php");
-                    die;
-                } else {
-                    $error_message = "Incorrect password.";
+                
+                else if ($user_data['user_type'] === 'user') {
+                    if (password_verify($password, $user_data['password'])) {
+                        $_SESSION['user_id'] = $user_data['user_id'];
+                        $_SESSION['user_name'] = $user_data['user_name'];
+                        $_SESSION['user_email'] = $user_data['user_email'];
+                        header("Location: faqjaKryesore.php");
+                        die;
+                    } else {
+                        $error_message = "Incorrect password.";
+                    }
                 }
             } else {
                 $error_message = "This user doesn't exist.";

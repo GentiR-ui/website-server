@@ -10,16 +10,30 @@ if (!isset($_SESSION['user_id'])) {
     die;
 }
 
+
+if (isset($_GET['delete'])) {
+    $delete_id = $_GET['delete'];
+    $sql = "DELETE FROM users WHERE id = :id";
+    $stmt = $con->prepare($sql);
+    $stmt->bindParam(':id', $delete_id, PDO::PARAM_INT);
+    $stmt->execute();
+
+
+    header("Location: adminUsers.php");
+    exit();
+}
+
+
+
 try {
     $user_id = trim($_SESSION['user_id']);
-    $user_id = (int)$user_id; 
+    $user_id = (int)$user_id;
 
     $query = "SELECT * FROM users WHERE user_id = :user_id";
     $stmt = $con->prepare($query);
     $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
     $stmt->execute();
 
-    
     if ($stmt->rowCount() > 0) {
         $user_data = $stmt->fetch(PDO::FETCH_ASSOC);
     } else {
@@ -27,6 +41,38 @@ try {
     }
 } catch (PDOException $e) {
     die("Gabim në query: " . $e->getMessage());
+}
+
+if (isset($_GET['edit'])) {
+    $edit_id = $_GET['edit'];
+
+    $sql = "SELECT * FROM users WHERE id = :id";
+    $stmt = $con->prepare($sql);
+    $stmt->bindParam(':id', $edit_id, PDO::PARAM_INT);
+    $stmt->execute();
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
+
+if(isset($_POST['editBtn'])){
+    $id = $_POST['user_id'];
+    $name = $_POST['user_name'];
+    $email = $_POST['user_email'];
+    $user_type = $_POST['user_type'];
+    $password = $_POST['password'];
+    
+
+    $sql = "UPDATE users SET user_name = :name, user_email = :email, user_type = :user_type, password = :password  WHERE user_id = :id";
+    $stmt = $con->prepare($sql);
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+    $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+    $stmt->bindParam(':password', $password, PDO::PARAM_STR);
+    $stmt->bindParam(':user_type', $user_type);
+    $stmt->execute();
+
+    header("Location: adminUsers.php");
+    exit();
 }
 ?>
 
@@ -39,11 +85,12 @@ try {
     <link rel="stylesheet" href="header.css?<?php echo time(); ?>">
     <link rel="stylesheet" href="adminPage.css?<?php echo time(); ?>">
     <link rel="stylesheet" href="general.css?<?php echo time(); ?>">
+    <link rel="stylesheet" href="adminUsers.css?<?php echo time(); ?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
 </head>
 <body>
 
-    <navbar class="header">
+<navbar class="header">
         <div class="left-section">
             <img src="faqjaKryesoreImg/logo.png" class="logo">
         </div>
@@ -74,105 +121,55 @@ try {
             <a href="adminUsers.php">USERS</a>
             <a href="adminMessages.php">MESSAGES</a>
         </div>
-    </navbar>  
-    <div class="dashboard">
-        <div class="detail">
-            <h1>ADMIN DASHBOARD</h1>
-        </div>
-        
-        <div class="boxes">
-            <div class="box">
-                <?php
-                    $select_orders = "SELECT * FROM orders";
-                    $num_of_orders = $con->prepare($select_orders);
-                    $num_of_orders->execute();
-                    
-                ?>
-                <h2>ORDERS</h2>
-                <p><?php echo $num_of_orders->rowCount();?></p>
-            </div>
-            <div class="box">
-                <?php
-                    $select_products = "SELECT * FROM products";
-                    $num_of_products = $con->prepare($select_products);
-                    $num_of_products->execute();
-                    
-                ?>
-                <h2>NUMBER OF PRODUCTS</h2>
-                <p><?php echo $num_of_products->rowCount();?></p>
-            </div>
-            <div class="box">
-                <?php
-                    $select_users = "SELECT * FROM users WHERE user_type = 'user'";
-                    $num_of_users = $con->prepare($select_users);
-                    $num_of_users->execute();
-                    
-                ?>
-                <h2>NUMBER OF USERS</h2>
-                <p><?php echo $num_of_users->rowCount();?></p>
-            </div>
-            <div class="box">
-                <?php
-                    $select_messages = "SELECT * FROM contact_form";
-                    $num_of_msg = $con->prepare($select_messages);
-                    $num_of_msg->execute();
-                    
-                ?>
-                <h2>NUMBER OF MESSAGES</h2>
-                <p><?php echo $num_of_msg->rowCount();?></p>
-            </div>
-        </div>
+    </navbar>
 
-            <style>
-                .contact-info {
-                    background-color: #f9f9f9;
-                    border: 1px solid #ddd;
-                    padding: 20px;
-                    margin-top: 20px;
-                    border-radius: 5px;
-                }
+    <h1 class="titulli">USERS</h1>
 
-                .contact-info h2 {
-                    margin-bottom: 15px;
-                    text-align: center;
-                    font-size: 24px;
-                    color: #333;
-                }
-
-                .contact-info p {
-                    margin: 5px 0;
-                    font-size: 18px;
-                    color: #555;
-                }
-
-                .contact-info p strong {
-                    color: #000;
-                }
-            </style>
-            
-                
-                <?php
-                    $select_all_contact_info = "SELECT * FROM contact_info";
-                    $all_contact_info_stmt = $con->prepare($select_all_contact_info);
-                    $all_contact_info_stmt->execute();
-                    ?><div class="contact-info">
-                    <h2>Contact Info</h2>
-                    <?php
-                    while ($row = $all_contact_info_stmt->fetch(PDO::FETCH_ASSOC)) {
-                        
-                        echo "<p><strong>Address:</strong> " . $row['Adress'] . "</p>";
-                        echo "<p><strong>Contact:</strong> " . $row['Contact'] . "</p>";
-                        echo "<p><strong>Hours:</strong> " . $row['Hours'] . "</p>";
-                        
-                    }?>
+    <div class="users">
+            <?php 
+               $sql = "SELECT * FROM users";
+               $stmt = $con->prepare($sql);
+               $stmt->execute();
+               while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {  
+            ?>
+            <div class="section_user">
+                <div class="user_info">
+                    <p>User ID: <?php echo $row['user_id']?></p>  
+                    <p>User Name: <?php echo $row['user_name']?></p>
+                    <p>Date of register: <?php echo $row['date']?></p>
+                    <p>User Type: <?php echo $row['user_type']?></p>
+                    <p>User Email: <?php echo $row['user_email']?></p>
+                    <div class="btns">
+                        <a href="adminUsers.php?delete=<?php echo $row['id'];?>" name="delete_id" class="btn" onclick="return confirm('Are you sure you want to delete this product?');">Delete</a>
+                        <a href="adminUsers.php?edit=<?php echo $row['id'];?>" name="edit_id" class="btn">Edit</a>
                     </div>
-                
-            
-            
-        
-        
-    </div>  
+                </div>
+            </div>    
+
+            <?php } ?>
+    </div>
+    <div class="editUser" >
+                <h3>Edit User</h3>
+                <form action="adminUsers.php" method="post">
+                    <input type="text" name="user_id" value="<?=$user['user_id']?>" readonly> <br> <br>
+                    
+                    <input type="text" name="user_name" value="<?=$user['user_name']?>"> <br> <br>
+                    
+                    <input type="text" name="user_email" value="<?=$user['user_email']?>"> <br> <br>
+                    
+                    <input type="text" name="user_type" value="<?=$user['user_type']?>"> <br> <br>
+                    
+                    <input type="text" name="password" value="<?=$user['password']?>"> <br> <br>
+
+                    <input type="submit" name="editBtn" value="Save Changes"> <br> <br>
+                </form>
+            </div>
     
+    
+
+
+
+
     <script>
         
     const userBtn = document.getElementById("user-btn");
@@ -225,8 +222,5 @@ try {
             }
         });
     </script>
-
-
 </body>
-</html>
-
+</html>    

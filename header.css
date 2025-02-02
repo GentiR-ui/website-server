@@ -11,11 +11,55 @@ navbar {
     background-color: #22252C;
     z-index: 100;
     opacity: 0.9;
+
    
 }
 
+.user-box {
+    display: none;
+    position: absolute;
+    top: 50px; 
+    right: 10px; 
+    background: white;
+    border: 1px solid #ddd;
+    z-index: 100;
+    padding: 20px;
+    right: 2rem;
+    padding-right: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
 
+.btn {
+    background-color: #E14658;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    
+}
 
+.btn:hover {
+    background-color: #dc707d;
+    
+}
+
+.icons {
+    color:  white;
+    font-size: 24px;
+    padding-left: 80px;
+}
+
+#menu-btn {
+    display: none;
+}
+
+#user-btn {
+    cursor: pointer;;
+}
 .submenu-content {
         list-style: none;
         padding: 0;
@@ -124,8 +168,10 @@ navbar a:hover{
 
 .right-section {
     display: flex;
-    width: 200px;
+    width: 250px;
     align-items: center;
+    padding-right: 10px;
+    justify-content: space-around;
 }
 
 .log-in-button {
@@ -151,6 +197,59 @@ navbar a:hover{
     opacity: 0.6;
   }
 
+  
 
+.mid{
+    display: none;
+}
+  @media (max-width: 885px) {
+    .middle-section{
+        display: none;
+    }
+    #menu-btn {
+        display: block;
+        cursor: pointer;
+    }
+    
+    .mid {
+        
+        position: absolute;
+        display: block ;
+        background-color: #ddd;
+        height: auto;
+        flex-direction: column;
+        min-width: 100%;
+        align-items: flex-start;
+        justify-content: left;
+        top: 100%;
+        transition: 0.5s;
+        
+    }
+    .mid a {
+        color: #333;
+        font-size: 20px;
+        font-weight: 500;
+        padding: 10px 20px;
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        }
+    .mid a:hover {
+        background-color: #E14658;
+        color: white;
+    }
+    .icons {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+    }
+    
+
+    .mid{
+        display: none ;
+    }
+    
+}
   
 

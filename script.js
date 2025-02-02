@@ -35,5 +35,67 @@ document.getElementById('register').addEventListener('submit', function(event) {
         event.preventDefault();
     }
 
+    const header = document.querySelector('header');
+    function fixedNavbar(){
+        header.classList.toggle('scrolled', window.pageYOffset > 0);
 
+    }
+    fixedNavbar();
+    window.addEventListener('scroll', fixedNavbar);
+
+    //dsdsdsdsdsdsdsdsdssdssssssssssssssssssssssssssssssssss
+    
+
+        // Merr ikonën dhe div-in
+    const userBtn = document.getElementById("user-btn");
+    const userBox = document.getElementById("myDiv");
+
+    // Event listener për të hapur/mbyllur div-in
+    userBtn.addEventListener("click", (e) => {
+        e.stopPropagation(); // Parandalon që klikimi të shpërndahet
+        if (userBox.style.display === "block") {
+            userBox.style.display = "none";
+        } else {
+            userBox.style.display = "block";
+        }
+    });
+
+    // Mbyll div-in kur klikon diku tjetër
+    
+
+    
+    
+    
+    // Merr ikonën dhe div-in
+    const menuBtn = document.getElementById("menu-btn");
+    const middleSection = document.querySelector(".mid");
+
+    window.addEventListener("click", (e) => {
+        if (!userBox.contains(e.target) && !userBtn.contains(e.target)) {
+        }
+        if (!middleSection.contains(e.target) && !menuBtn.contains(e.target)) {
+            middleSection.style.display = "none";
+        }
+    });
+    // Event listener për të hapur/mbyllur div-in
+    menuBtn.addEventListener("click", (e) => {
+        e.stopPropagation(); // Parandalon që klikimi të shpërndahet
+        if (middleSection.style.display === "block") {
+            middleSection.style.display = "none";
+        } else {
+            middleSection.style.display = "block";
+        }
+    });
+
+    // Mbyll div-in kur klikon diku tjetër
+    window.addEventListener("resize", () => {
+        if (window.innerWidth > 768) {
+            middleSection.style.display = "none";
+        }
+    });
+
+    // Mbyll div-in kur klikon diku tjetër
+    
+    
+   
 });

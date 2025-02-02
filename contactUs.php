@@ -1,18 +1,47 @@
 <?php 
-session_start();
+    session_start();
 
-include("connection.php");
-include("functions.php");
+    include("connection.php"); 
+    include("functions.php");
 
-function merrPermbajtjen($renditja, $con) {
-    $sql = "SELECT permbajtja FROM contact_us WHERE renditja = :renditja";
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $subject = $_POST['subject'];
+        $message = $_POST['message'];
+
+        try {
+            
+            $sql = "INSERT INTO contact_form (name, email, subject, message) VALUES (:name, :email, :subject, :message)";
+            $stmt = $con->prepare($sql);
+
+            $stmt->bindParam(':name', $name);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':subject', $subject);
+            $stmt->bindParam(':message', $message);
+
+            $stmt->execute();
+            
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+
+    function merrPermbajtjen($renditja, $con) {
+        $sql = "SELECT permbajtja FROM contactus WHERE renditja = :renditja";
+        $stmt = $con->prepare($sql);
+        $stmt->bindParam(':renditja', $renditja, PDO::PARAM_INT);
+        $stmt->execute();
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $row ? $row['permbajtja'] : null; 
+    }
+
+    $sql = "SELECT * FROM contact_info";
     $stmt = $con->prepare($sql);
-    $stmt->bindParam(':renditja', $renditja, PDO::PARAM_INT);
     $stmt->execute();
-    $row = $stmt->fetch(PDO::FETCH_ASSOC);
-    return $row ? $row['permbajtja'] : null; 
-}
+    $contactInfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+    
 ?>
 
 <!DOCTYPE html>
@@ -20,12 +49,11 @@ function merrPermbajtjen($renditja, $con) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ADSPIRE</title>
-    <link rel="stylesheet" href="general.css?<?php echo time(); ?>">
+    <title>Document</title>
     <link rel="stylesheet" href="header.css?<?php echo time(); ?>">
-    <link rel="stylesheet" href="ourwork3.css?<?php echo time(); ?>">
+    <link rel="stylesheet" href="general.css?<?php echo time(); ?>">
+    <link rel="stylesheet" href="contactUs.css?<?php echo time(); ?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="ourwork.css?<?php echo time(); ?>">
 </head>
 <body>
 <navbar class="header">
@@ -39,9 +67,9 @@ function merrPermbajtjen($renditja, $con) {
                     <li><a href="MarketPlace.php">MARKETPLACE</a></li>
                 </ul>
             </li>
-            <a href="ourwork.php">OUR WORK</a>
+            <a href="OurWork.php">OUR WORK</a>
             <a href="AboutUs.php">ABOUT US</a>
-            <a href="contactUs.php">CONTACT US</a>
+            <a href="ContactUs.php">CONTACT US</a>
         </div>
         <div class="right-section">
             <?php
@@ -73,108 +101,80 @@ function merrPermbajtjen($renditja, $con) {
         </div>
         <div class="mid">
             <a href="FaqjaKryesore.php">HOME</a>
-            <a href="MarketPlace.php">MARKETPLACE</a>    
-            <a href="ourwork.php">OUR WORK</a>
+            <a href="MarketPlace.php">MARKETPLACE</a>
+            <a href="OurWork.php">OUR WORK</a>
             <a href="AboutUs.php">ABOUT US</a>
-            <a href="contactUs.php">CONTACT US</a>
+            <a href="ContactUs.php">CONTACT US</a>
         </div>
     </navbar>
-    <main>
-        <section class="main">
-            <div class="first-block">
-                <video width="100%" height="100%" autoplay loop muted class="marketing-video">
-                    <source src="<?php echo merrPermbajtjen(1, $con)?>" type="video/mp4">
-                </video>
-                <div class="text-overvideo">
-                    <p>OUR WORK</p>
-                    <h1><?php echo merrPermbajtjen(2, $con)?></h1>
-                    <h3><?php echo merrPermbajtjen(3, $con)?></h3>
-                </div>
-            </div>
-            <div class="second-block">
-                <div class="left-block">
-                    <div class="head-part">
-                        <p class="first-line">Why Choose Us?</p>
+    <main class="main"> 
+        <div class="first-block">
+            <img class="contactImg" src="<?php echo merrPermbajtjen(1, $con)?>">
+            <h1><?php echo merrPermbajtjen(2, $con)?></h1>
+            <p><?php echo merrPermbajtjen(3, $con)?></p>
+        </div>
+        <div class="sc-block">
+                <h2><?php echo merrPermbajtjen(4, $con)?></h2>
+                <div class="contact-details">
+                    <div class="detail-item">
+                        <h3><?php echo merrPermbajtjen(5, $con)?></h3>
+                        <?php
+                            foreach ($contactInfo as $info) {
+                                echo '<p>' . $info['Adress'] . '</p>';
+                            }
+                        ?>
                     </div>
-                    <div class="main-part">
-                        <p>
-                            <h2>1. Expertise You Can Trust</h2>
-                            <?php echo merrPermbajtjen(4, $con)?> <br>
-                              <br>
-                            <h2>2. Personalized Approach</h2>  
-                            <?php echo merrPermbajtjen(5, $con)?><br>
-                              <br>
-                             <h2>3. High-Quality Results</h2>
-                             <?php echo merrPermbajtjen(6, $con)?><br>
-                             <br>
-                             <h2>4. On-Time Delivery</h2>
-                             <?php echo merrPermbajtjen(7, $con)?><br>
-                        </p>
+                    <div class="detail-item">
+                        <h3><?php echo merrPermbajtjen(6, $con)?></h3>
+                        <?php
+                            foreach ($contactInfo as $info) {
+                                echo '<p>' . $info['Contact'] . '</p>';
+                            }
+                        ?>
                     </div>
-                    <div class="button-part">
-                        <button class="discover-more-button"><a href="AboutUs.php">KNOW MORE ABOUT THIS</a></button>
+                    <div class="detail-item">
+                        <h3><?php echo merrPermbajtjen(7, $con)?></h3>
+                        <?php
+                            foreach ($contactInfo as $info) {
+                                echo '<p>' . $info['Hours'] . '</p>';
+                            }
+                        ?>
                     </div>
-                    
-                </div>
-                <div class="right-block">
-                    <div class="right-block-img">
-                        <img src="<?php echo merrPermbajtjen(8, $con)?>" class="marketingImg">
-                    </div>    
-                </div>
-            </div>
-            <div class="third-block">
-                <div class="third-block-title">
-                    <p>WEBSITE DEVELOPMENT</p>
-                    <h1><?php echo merrPermbajtjen(9, $con)?></h1>
-                </div>
-                <div class="third-block-body">
-                    <div class="third-block-texti1"> <I><b><h1>WHY CHOOSE US?</h1></b></I> <br>
-                     <br>
-                    <p><?php echo merrPermbajtjen(10, $con)?><br>
-                        <br>
-                        <?php echo merrPermbajtjen(11, $con)?><br>
-                        <br>
-                        <?php echo merrPermbajtjen(12, $con)?> <br>
-                    </p>
-                    </div>
-                </div>
-            </div>
-            <div class="fourth-block">
-                <h2>What's holding you back?</h2>
-                <div class="fourth-block-body">
-                    <img src="<?php echo merrPermbajtjen(13, $con)?>" alt="foto4">
-                    
-                </div>
-                <hr style="border: 1px solid rgb(223, 223, 223); width: 99%; margin: 20px auto;">
-                <div>
-                    <img src="<?php echo merrPermbajtjen(14, $con)?>" class="fourth-block-img">
-                </div>
-            </div>
-            <div class="fifth-block">
-                <div class="texti2">
-                    <p><?php echo merrPermbajtjen(15, $con)?></p>
-
                 </div>
 
-
-                
-                <div class="anamajt">
-                    <div class="logo1">
-                        <img src="<?php echo merrPermbajtjen(16, $con)?>" class="logo11">
-                        
-                    </div>
-                </div>
-                
+        </div>
+        <div class="th-block">
+            <div class="message">
+                <h1><?php echo merrPermbajtjen(8, $con)?></h1>
+                <p>
+                <?php echo merrPermbajtjen(9, $con)?>
+                </p>
             </div>
-            <div class="need-help">
-                <h1>Need more help?</h1>
-                <p><?php echo merrPermbajtjen(17, $con)?></p>
-                <button class="need-help-button"><a href="ContactUs.php">CONTACT US</a></button>
+            
+            <div class="container">
+                    <form id="contact" method="POST">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="subject" name="subject" placeholder="Subject" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button class="sendMessage" type="submit">Send Message</button>
+                    </form>
             </div>
-            <div class="footer">
+            
+        </div>
+    </main>
+    <div class="footer">
                 <div class="footer-first">
-                    <img src="<?php echo merrPermbajtjen(18, $con)?>" class="footerImg">
-                    <p><?php echo merrPermbajtjen(19, $con)?></p>
+                    <img src="<?php echo merrPermbajtjen(10, $con)?>" class="footerImg">
+                    <p><?php echo merrPermbajtjen(11, $con)?></p>
                 </div>
                 <div class="footer-second">
                     <h1>Services</h1>
@@ -202,10 +202,8 @@ function merrPermbajtjen($renditja, $con) {
                     </ul>
                 </div>
             </div>
-        </section>
-    </main>  
 
-    <<script>
+            <script>
         
         const userBtn = document.getElementById("user-btn");
         const userBox = document.getElementById("myDiv");
